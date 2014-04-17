@@ -1,4 +1,4 @@
-</h2>Basic Unix wc function</h2>
+<h2>Basic Unix wc function</h2>
 
 Input:
 <blockquote>
