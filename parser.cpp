@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <fstream>
 #include <string.h>
+#include <set>
 
 const int BUFSIZE = 500;
 
@@ -20,11 +21,21 @@ int main(int argc, char** argv) {
 
 	if(file.good()) {
 
+		const char* ignored_words[] = {
+			"I", "We", "You", "They",
+			"a", "and", "the", "that",
+			"of", "for", "with"
+		};
+
+		set<string> ignored_words_set(ignored_words, ignored_words+11);
+
 		char buf[BUFSIZE];
 		char* word;
 		int line_count = 0;
 		int word_count = 0;
 		int byte_count = 0;
+		int proper_word_count = 0;
+		int proper_byte_count = 0;
 
 		while(file.getline(buf, BUFSIZE)) {
 			
@@ -32,6 +43,7 @@ int main(int argc, char** argv) {
 			
 			// Counts bytes in a line including null and newline character
 			byte_count += strlen(buf) + 1;
+			proper_byte_count += strlen(buf) + 1;
 			
 			// Break up lines into words. Words may still contain ',.;' characters
 			word = strtok(buf, " ");
@@ -39,11 +51,21 @@ int main(int argc, char** argv) {
 			while(word != NULL) {
 
 				word_count++;
+
+				if(!ignored_words_set.count(word)) {
+					proper_word_count++;
+				}
+				else {
+					proper_byte_count -= strlen(word) + 1;
+				}
+
 				word = strtok(NULL, " ");
 			}
 		}
 
-		printf(" %d %d %d %s\n", line_count, word_count, byte_count, argv[1]);
+		printf(" all: %d %d %d %s\n", line_count, word_count, byte_count, argv[1]);
+		printf(" proper: %d %d %d\n", line_count, proper_word_count, proper_byte_count);
+		
 	}
 	else {
 
