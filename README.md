@@ -28,7 +28,7 @@ Total Sections per Article: <br />
 Input:
 <blockquote>
 make run
-<blockquote>
+</blockquote>
 
 Output:
 <blockquote>
