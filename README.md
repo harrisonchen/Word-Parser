@@ -33,7 +33,7 @@ make run
 Output:
 <blockquote>
 all: 872 7652 45119 constitution.txt <br />
-proper: 872 6020 39362 <br />
+proper: 872 6020 39236 <br />
 Total Articles: 7 <br />
 Total Sections: 21 <br />
 Total Sections per Article: <br /> 
