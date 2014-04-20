@@ -48,14 +48,14 @@ if File.exist?(ARGV[0])
 
 	file.close
 
-	puts "all: #{line_count} #{word_count} #{byte_count} #{ARGV[0]}"
-	puts "proper: #{line_count} #{proper_word_count} #{proper_byte_count}"
-	puts "Total Articles: #{article_count}"
-	puts "Total Sections: #{section_count}"
-	puts "Total Sections per Article: "
+	puts " all: #{line_count} #{word_count} #{byte_count} #{ARGV[0]}"
+	puts " proper: #{line_count} #{proper_word_count} #{proper_byte_count}"
+	puts " Total Articles: #{article_count}"
+	puts " Total Sections: #{section_count}"
+	puts " Total Sections per Article: "
 	
 	sections_per_article.to_a.reverse.each do |article|
-		puts "    #{article[0]}: #{article[1]}"
+		puts "     #{article[0]}: #{article[1]}"
 	end
 		
 else
